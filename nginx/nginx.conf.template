@@ -28,7 +28,7 @@ http {
 
     server {
         listen       80;
-        server_name [host_name and/or ip_address]; 
+        server_name [server_name]; 
 
         access_log  /var/log/nginx/[app_name].access.log;
         error_log   /var/log/nginx/[app_name].error.log  error;
@@ -39,7 +39,7 @@ http {
 
         location / {
             proxy_intercept_errors on;
-            proxy_pass http://[host_name]:[port_number]/;
+            proxy_pass http://[app_name]:[port_number]/;
             proxy_set_header Host $http_host;
             #proxy_redirect / /[path_optional]/;
         }
