@@ -3,10 +3,10 @@
 while getopts "a:s:p:" opt; do
     case "$opt" in
         a)
-            APP_NAME=$(echo $OPTARG | sed "s/http:\/\///g" | sed "s/\///g" | sed "s/,/ /g")
+            APP_NAME=$(echo $OPTARG | sed "s/https\{0,1\}:\/\///g" | sed "s/\///g" | sed "s/,/ /g")
             ;;
         s)
-            SERVER_NAME=$(echo $OPTARG | sed "s/http:\/\///g" | sed "s/\///g" | sed "s/,/ /g")
+            SERVER_NAME=$(echo $OPTARG | sed "s/https\{0,1\}:\/\///g" | sed "s/\///g" | sed "s/,/ /g")
             ;;
         p)
             PORT=$(echo $OPTARG)
@@ -15,12 +15,12 @@ while getopts "a:s:p:" opt; do
 done
 
 
-if [ -z $APP_NAME]; then
+if [ -z $APP_NAME ]; then
     echo App should not be blank
     exit 1
 fi
 
-if [ -z $PORT]; then
+if [ -z $PORT ]; then
     echo Port should not be blank
     exit 1
 fi

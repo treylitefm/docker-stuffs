@@ -45,7 +45,7 @@ http {
         }
 
         location ~ \.(jpg|png|css|js)$ {
-            root /var/www/; #adjust according to location of static assets
+            root /var/www/[app_name]/; 
         }
 
         error_page  404              /404.html;

@@ -1,0 +1,32 @@
+version: "2"
+services:
+    nginx: 
+        container_name: nginx-[app_name]
+        build:
+            context: nginx
+            dockerfile: Dockerfile-[app_name]
+        image: nginx-[app_name]
+        depends_on:
+            - web
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            -  ./[project_parent_dir]/[project_name]:/var/www/[app_name]
+    web:
+        container_name: [app_name]
+        build: 
+            context: [project_parent_dir]
+            dockerfile: Dockerfile-[app_name]
+        image: [app_name]
+        links:
+            - postgres
+        depends_on:
+            - postgres
+        expose:
+            - "8000"
+    postgres:
+        container_name: postgres-server
+        image: postgres
+        ports: 
+            - "5432:5432"

@@ -14,8 +14,7 @@ RUN pip install psycopg2
 RUN pip install gunicorn
 RUN pip install -r requirements.txt 
 
-#RUN python manage.py collectstatic
-
 EXPOSE 8000
 
-CMD ["gunicorn --workers 3 bind 0.0.0.0:8000 [project_name].wsgi:application"]
+COPY ./docker-entrypoint.sh /var/www
+ENTRYPOINT ["./docker-entrypoint.sh", "[project_name]"]
