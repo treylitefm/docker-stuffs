@@ -2,7 +2,7 @@ FROM nginx
 MAINTAINER treylitefm
 
 RUN apt-get update
-RUN apt-get install -y python python-dev virtualenv python-virtualenv gcc dialog libaugeas0 augeas-lenses libssl-dev libffi-dev ca-sertificates cron
+RUN apt-get install -y python python-dev virtualenv python-virtualenv gcc dialog libaugeas0 augeas-lenses libssl-dev libffi-dev ca-certificates cron
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY static  /var/www/static/
