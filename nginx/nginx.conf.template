@@ -44,7 +44,7 @@ http {
             #proxy_redirect / /[path_optional]/;
         }
 
-        location ~ \.(jpg|png|css|js)$ {
+        location ~ \.(jpg|png|css|html|js)$ {
             root /var/www/[app_name]/; 
         }
 
